@@ -13,11 +13,13 @@ const ParticlesComponent = (props) => {
   const [setInit] = useState(false);
   useEffect(() => {
     initParticlesEngine(async (engine) => {
+      // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
       await loadSlim(engine);
     }).then(() => {
-      setInit(true);
+      setInit(true);  // Updates the state after particles are initialized
     });
-  }, []);
+  }, [setInit]);  // Include setInit in the dependency array
+  
 
   const particlesLoaded = (container) => {
     console.log(container);
